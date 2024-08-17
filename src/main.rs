@@ -1,7 +1,8 @@
 use std::io::stdin;
+use std::f64::consts::PI as PI;
 
 const G: f64 = 6.674e-11; //constant GRAVITY
-const M: f64 = 1.989e30; //constant MASS
+const M: f64 = 1.989e30; //constant MASS //constant PI
 
 fn main() {
     println!("Please enter the distance in AU:");
@@ -10,16 +11,23 @@ fn main() {
     let _ = stdin().read_line(&mut input).expect("Something went wrong while buffering");
     
     input = input.trim().to_string();
+    
+    let result_input = input.parse().unwrap();
 
-    let result = convert_from_au_to_meters(input.parse().expect("Something went wrong while parsing"));
+    //Converting to meters
+    let distance = convert_from_au_to_meters(result_input);
 
-    println!("{result} meters");
+    println!("\nDistance: {distance} meters");
 
-    let mut speed = calculate_orbital_speed(result.clone());
+    let mut speed = calculate_orbital_speed(distance);
 
     speed = convert_from_meter_to_km(speed);
 
     println!("Speed: {speed} km/s");
+
+
+    let orbit_in_seconds = orbital_period_in_seconds(distance);
+    println!("Orbital period in seconds: {orbit_in_seconds}");
 }
 
 fn convert_from_au_to_meters(input: f64) -> f64 {
@@ -35,4 +43,10 @@ fn calculate_orbital_speed(radius: f64) -> f64 {
 
 fn convert_from_meter_to_km(input: f64) -> f64 {
     input / 1000.0
+}
+
+
+//I don't know is it correct I will have to find out
+fn orbital_period_in_seconds(radius: f64) -> f64 {
+    2.0 * PI * (radius.powf(3.0) / (G * M)).sqrt()
 }
