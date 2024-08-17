@@ -7,7 +7,8 @@ mod calculate;
 mod convert;
 
 fn main() {
-    height_and_gravity();
+    // height_and_gravity();
+    range();
 }
 
 
@@ -53,4 +54,13 @@ fn distance_and_orbit() {
 
     let orbit_in_seconds = calculate::orbital_period_in_seconds(distance);
     println!("Orbital period in seconds: {orbit_in_seconds}");
+}
+
+fn range() {
+    let star1 = (1.0, 2.0, 3.0);
+    let star2 = (4.0, 5.0, 6.0);
+
+    let range = calculate::range_between_stars(star1, star2);
+
+    println!("Distance between two stars is {range}");
 }
