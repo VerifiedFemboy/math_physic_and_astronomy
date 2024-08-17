@@ -26,6 +26,10 @@ pub fn orbital_period_in_seconds(radius: f64) -> f64 {
     2.0 * PI * (radius.powf(3.0) / (G * M)).sqrt()
 }
 
+pub fn orbital_period_in_years(radius: f64) -> f64 {
+    (2.0 * PI * (radius.powf(3.0) / (G * M)).sqrt() / 31_536_000.0).round()
+}
+
 pub fn range_between_stars(star1: (f64, f64, f64), star2: (f64, f64, f64)) -> f64 {
     let x1 = star1.0;
     let y1 = star1.1;
@@ -38,3 +42,13 @@ pub fn range_between_stars(star1: (f64, f64, f64), star2: (f64, f64, f64)) -> f6
     let d = ((x1 - x2).powf(2.0) + (y1 - y2).powf(2.0) + (z1 - z2).powf(2.0)).sqrt();
     d
 }
+
+pub fn min_speed(radius: f64, planet_mass: f64) -> f64 {
+    let vc = ((2.0*G*M) / radius).sqrt();
+    vc
+}
+
+//vc = sqrt((2*G*M)/R)
+//G - constant gravity (6.667e-11)
+//M - planet's mass
+//R - planet's radius

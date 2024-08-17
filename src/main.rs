@@ -8,7 +8,15 @@ mod convert;
 
 fn main() {
     // height_and_gravity();
-    range();
+    // range();
+    // distance_and_orbit();
+
+    // let radius = 6.371e6;
+    // let mass = 5.972e24;
+    // let result = calculate::min_speed(radius, mass);
+
+
+    // println!("{}", result.round());
 }
 
 
@@ -52,8 +60,11 @@ fn distance_and_orbit() {
     println!("Speed: {speed} km/s");
 
 
-    let orbit_in_seconds = calculate::orbital_period_in_seconds(distance);
+    let orbit_in_seconds = calculate::orbital_period_in_seconds(distance).round();
     println!("Orbital period in seconds: {orbit_in_seconds}");
+    let orbit_in_years = calculate::orbital_period_in_years(distance);
+    println!("Orbital period in seconds: {orbit_in_years}");
+
 }
 
 fn range() {
