@@ -7,16 +7,29 @@ mod calculate;
 mod convert;
 
 fn main() {
-    // height_and_gravity();
-    // range();
-    // distance_and_orbit();
+    println!("Welcome to the Space Calculator!");
 
-    // let radius = 6.371e6;
-    // let mass = 5.972e24;
-    // let result = calculate::min_speed(radius, mass);
+    loop {
+        println!("\nPlease select an option:");
+        println!("1. Height and Gravity");
+        println!("2. Distance and Orbit");
+        println!("3. Range between stars");
+        println!("4. Exit");
 
+        let mut input = String::new();
 
-    // println!("{}", result.round());
+        stdin().read_line(&mut input).unwrap();
+
+        let input: u32 = input.trim().parse().unwrap();
+
+        match input {
+            1 => height_and_gravity(),
+            2 => distance_and_orbit(),
+            3 => range(),
+            4 => break,
+            _ => println!("Invalid input. Please try again."),
+        }
+    }
 }
 
 

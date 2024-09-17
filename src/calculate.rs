@@ -43,10 +43,10 @@ pub fn range_between_stars(star1: (f64, f64, f64), star2: (f64, f64, f64)) -> f6
     d
 }
 
-pub fn min_speed(radius: f64, planet_mass: f64) -> f64 {
-    let vc = ((2.0*G*M) / radius).sqrt();
-    vc
-}
+// pub fn min_speed(radius: f64, planet_mass: f64) -> f64 {
+//     let vc = ((2.0*G*M) / radius).sqrt();
+//     vc
+// }
 
 //vc = sqrt((2*G*M)/R)
 //G - constant gravity (6.667e-11)
