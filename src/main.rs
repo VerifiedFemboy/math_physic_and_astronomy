@@ -2,6 +2,8 @@ use std::io::stdin;
 
 const G: f64 = 6.674e-11; //constant GRAVITY
 const M: f64 = 1.989e30; //constant MASS of Sun
+const K: f64 = 9e9; //constant ELECTROSTATIC
+
 
 mod calculate;
 mod convert;
@@ -14,7 +16,8 @@ fn main() {
         println!("1. Height and Gravity");
         println!("2. Distance and Orbit");
         println!("3. Range between stars");
-        println!("4. Exit");
+        println!("4. Compare the strength of the electrostatic force to the strength of the gravitational force");
+        println!("5. Exit");
 
         let mut input = String::new();
 
@@ -26,7 +29,8 @@ fn main() {
             1 => height_and_gravity(),
             2 => distance_and_orbit(),
             3 => range(),
-            4 => break,
+            4 => compare(),
+            5 => break,
             _ => println!("Invalid input. Please try again."),
         }
     }
@@ -87,4 +91,18 @@ fn range() {
     let range = calculate::range_between_stars(star1, star2);
 
     println!("Distance between two stars is {range}");
+}
+
+//TODO: finish it because it's not correct
+fn compare() {
+    let me = 9.1e-31;
+    let mp = 1.67e-27;
+    let gravity = G * (me * mp) / 1.0 * 1.0;
+    let q = 1.6e-19;
+    let culomb = K / (q * q) / 1.0 * 1.0;
+
+    let result = calculate::calculate_culomb_strength_with_gravity_strength(gravity, culomb);
+                
+    println!("The ratio of the strength of the electrostatic force to the strength of the gravitational force is {result}");
+
 }

@@ -43,6 +43,11 @@ pub fn range_between_stars(star1: (f64, f64, f64), star2: (f64, f64, f64)) -> f6
     d
 }
 
+pub fn calculate_culomb_strength_with_gravity_strength(gravity_strength: f64, culomb_strength: f64) -> f64 {
+    let strength: f64 = gravity_strength / culomb_strength;
+    strength
+}
+
 // pub fn min_speed(radius: f64, planet_mass: f64) -> f64 {
 //     let vc = ((2.0*G*M) / radius).sqrt();
 //     vc
